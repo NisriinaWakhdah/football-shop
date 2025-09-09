@@ -6,6 +6,6 @@ def show_main(request):
             'npm': '2406360445',
             'name': 'Nisriina Wakhdah Haris',
             'class': 'PBP B',
-            'appName': 'Main'
+            'appName': 'main'
     }
     return render(request, "main.html", context)
