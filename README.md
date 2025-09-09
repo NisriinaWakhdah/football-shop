@@ -4,7 +4,6 @@ Kelas: PBP - B
 link menuju app PWS: https://nisriina-wakhdah-footballshop.pbp.cs.ui.ac.id/
 
 1. Cara saya mengimplementasikan daftar checklist yang harus dikerjakan adalah, sebagai berikut:
-<<<<<<< HEAD
     - Hal pertama yang saya lakukan adalah membaca tutorial 0 dan 1 agar saya benar-benar paham fungsi setiap langkah yang harus dilakukan
     - Selain membaca tutorial, saya juga menonton video di youtube yang berkaitan dengan cara membuat proyek pada Django untuk pemula
     - Setelah saya paham langkah-langkahnya, saya mulai menyiapkan virtual enviroment dan membuat file requirements.txt yang berisi dependecies berkaitan dengan proyek yg akan dibuat lalu menginstall seluruh dependecies yang dibutuhkan
@@ -20,28 +19,11 @@ link menuju app PWS: https://nisriina-wakhdah-footballshop.pbp.cs.ui.ac.id/
     - Menambahkan rute URL untuk  mengarahkan path URL '' ke rute yang sudah dibuat pada file urls.py yang ada di folder main. Hal ini dilakukan pada file urls.py yg ada di dalam folder football_shop untuk mengatur rute URL pada level proyek
     - Melakukan push ke repositori git untuk menyimpan perubahan2 tsb dan push ke pws master
 
-2. Berikut ini adalah bagan request client ke aplikasi web berbasis Django
-=======
-- Hal pertama yang saya lakukan adalah membaca tutorial 0 dan 1 agar saya benar-benar paham fungsi setiap langkah yang harus dilakukan
-- Selain membaca tutorial, saya juga menonton video di youtube yang berkaitan dengan cara membuat proyek pada Django untuk pemula, saya menonton channel youtube bernama Kelas Terbuka
-- Setelah saya paham langkah-langkahnya, saya mulai menyiapkan virtual enviroment dan membuat file requirements.txt yang berisi dependecies berkaitan dengan proyek yg akan dibuat lalu menginstall seluruh dependecies yang dibutuhkan
-- Membuat proyek Django, repositori untuk menyimpan proyek tsb di git, dan file .env.prod yang berisi krendesial database dan mengisi file .env dg PRODUCTION=False 
-- Membuat project baru pada web PWS dan mengganti remote URL pws dengan link project yang baru, menggunakan perintah git remote set-url pws <link>
-- Menambahkan domain pada ALLOWED_HOSTS yang ada di file settings.py
-- Melakukan add, commit, dan push ke repostiori yang sudah dibuat di git dan melakukan push ke pws master
-- Setelah membuat proyek Django, saya membuat aplikasi bernama main lalu membuat model untuk aplikasi pada file models.py
-- Pada file views.py, saya membuat fungsi show_main untuk menampilkan output yang berisi nama aplikasi, nama, dan npm saya. Fungsi tersebut saya hubungkan dengan file template bernama main.html yang sudah saya buat pada folder templates
-- Membuat model dan fitur-fiturnya pada file models.py
-- Menjalankan perintah python manage.py makemigration dan python manage.py migrate untuk menyimpan perubahan model pada database
-- Membuat file urls.py pada folder main lalu menambahkan URLPattern untuk melakukan routing URL aplikasi main, di sini saya menambahkan url untuk memanggil fungsi show_main yang sudah dibuat pada file views.py (level aplikasi)
-- Menambahkan rute URL untuk  mengarahkan path URL '' ke rute yang sudah dibuat pada file urls.py yang ada di folder main. Hal ini dilakukan pada file urls.py yg ada di dalam folder football_shop untuk mengatur rute URL pada level proyek
-- Melakukan push ke repositori git untuk menyimpan perubahan2 tsb dan push ke pws master
 2. Berikut ini adalah bagan request client ke aplikasi web berbabasis Django
->>>>>>> 4038ff22723df925b79615feba1f04661c10db52
 ![alt text](https://github.com/NisriinaWakhdah/football-shop/blob/master/django_77d5263d13.webp?raw=true)
 sumber gambar: https://www.biznetgio.com/news/django
 
-Penjelasan:
+    Penjelasan:
     - Client mengirimkan request ke server melalui browser, misalnya dengan mengakses sebuah URL
     - Setelah server mendapatkan url dr client, Django akan mecocokan request dengan pola URL (URL Configuration) yang sudah didefiniskan di dalam urls.py pada level proyek
     - Jika pola tersebut cocok dengan url.py yang berada di level proyek, maka akan dilanjutkan ke file urls.py level aplikasi untuk mecocokan pola yang ada di dalam aplikasi
