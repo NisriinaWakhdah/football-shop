@@ -19,7 +19,7 @@ link menuju app PWS: https://nisriina-wakhdah-footballshop.pbp.cs.ui.ac.id/
 - Menambahkan rute URL untuk  mengarahkan path URL '' ke rute yang sudah dibuat pada file urls.py yang ada di folder main. Hal ini dilakukan pada file urls.py yg ada di dalam folder football_shop untuk mengatur rute URL pada level proyek
 - Melakukan push ke repositori git untuk menyimpan perubahan2 tsb dan push ke pws master
 2. Berikut ini adalah bagan request client ke aplikasi web berbabasis Django
-![alt text]
+![alt text](https://github.com/NisriinaWakhdah/football-shop/blob/master/django_77d5263d13.webp?raw=true)
 sumber gambar: https://www.biznetgio.com/news/django
 
 3. Peran settings.py adalah:
