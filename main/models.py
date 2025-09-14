@@ -51,7 +51,7 @@ class Product(models.Model):
     
     # method untuk menaikkan jumlah viewer
     def increment_views(self):
-        self.items_viewer += 1
+        self.product_viewer += 1
         self.save()
     
 
