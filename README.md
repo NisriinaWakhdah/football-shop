@@ -47,7 +47,6 @@ sumber gambar: https://www.biznetgio.com/news/django
     - Untuk mengaplikasikan perubahan model ke dalam database lokal, jalankan perintah python manage.py migrate
 
 5. Django dijadikan sebagai permulaan pembelajaran karena:
-<<<<<<< HEAD
     - Django memiliki konsep yang terstruktur karena menerapkan pola arsitektur MTV. Hal ini dikarenakan Django memisahkan logika bisnis (model), logika presentasi (template), dan view.
     - Django menggunakan bahasa python yang syntaxnya relatif mudah dimengerti dan tidak terlalu panjang  dibanding bahasa yang lain (misalnya Java, C, dll) sehingga cocok untuk pemula
     - Django memiliki fitur bawaan yang lengkap sehingga pemula tidak perlu meng-install library tambahan dan tidak perlu membuat dari nol
@@ -55,11 +54,9 @@ sumber gambar: https://www.biznetgio.com/news/django
     - Django merupakan salah satu framework yang open source dan banyak digunakan. Oleh karena itu, terdapat banyak sumber belajar yang dapat diakses jika kita mengalami kesulitan
 
 6.  Feedback untuk kakak asdos di Tutorial 1 adalah: terima kasih sudah fast respon saat saya bertanya di forum diskusi discord, sudah stand-by dan hadir untuk membantu kami saat mengalami kendala, dan terima kasih juga karena telah membuatkan langkah-langkah tutorial yang jelas dan mudah dimengerti sehingga saya dapat mengikutinya dengan baikk
-=======
 - Django memiliki konsep yang terstruktur karena menerapkan pola arsitektur MTV. Hal ini dikarenakan Django memisahkan logika bisnis (model), logika presentasi (template), dan view.
 - Django menggunakan bahasa python yang syntaxnya relatif mudah dimengerti dan tidak terlalu panjang  dibanding bahasa yang lain (misalnya Java, C, dll) sehingga cocok untuk pemula
 - Django memiliki fitur bawaan yang lengkap sehingga pemula tidak perlu meng-install library tambahan dan tidak perlu membuat dari nol
 - Hasilnya bisa cepat dilihat melalui broweser
 - Django merupakan salah satu framework yang open source dan banyak digunakan. Oleh karena itu, terdapat banyak sumber belajar yang dapat diakses jika kita mengalami kesulitan
 6.  Feedback untuk kakak asdos di Tutorial 1 adalah: terima kasih sudah fast respon saat saya bertanya di forum diskusi discord, sudah stand-by dan hadir untuk membantu kami saat mengalami kendala, dan terima kasih juga karena telah membuatkan langkah-langkah tutorial yang jelas dan mudah dimengerti sehingga saya dapat mengikutinya dengan baikk
->>>>>>> 4038ff22723df925b79615feba1f04661c10db52
