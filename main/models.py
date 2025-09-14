@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Product(models.Model):
@@ -21,10 +22,11 @@ class Product(models.Model):
     thumbnail = models.URLField(blank=True, null=True)
     category = models.CharField(max_length=20, choices= category_choices, default='update')
     is_featured = models.BooleanField(default=False)
+    launch_at = models.DateTimeField(default=timezone.now)
     stock = models.IntegerField(default=0)
     rating = models.FloatField(default=0.0)
     brand = models.CharField()
-    items_viewer = models.PositiveIntegerField(default=0)
+    product_viewer = models.PositiveIntegerField(default=0)
     size = models.CharField()
 
     # method untuk mengembalikan nama produk yang dijual
@@ -37,7 +39,7 @@ class Product(models.Model):
         return self.rating >= 3.5
     
     @property
-    # method untuk menngecek apakah barangnya tersedia
+    # method untuk mengecek apakah barangnya tersedia
     def is_availaible(self):
         return self.stock > 0
     
