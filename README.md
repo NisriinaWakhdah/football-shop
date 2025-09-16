@@ -3,6 +3,8 @@ NPM: 2406360445
 Kelas: PBP - B
 link menuju app PWS: https://nisriina-wakhdah-footballshop.pbp.cs.ui.ac.id/
 
+Tugas INDIVIDU 2
+
 1. Cara saya mengimplementasikan daftar checklist yang harus dikerjakan adalah, sebagai berikut:
     - Hal pertama yang saya lakukan adalah membaca tutorial 0 dan 1 agar saya benar-benar paham fungsi setiap langkah yang harus dilakukan
     - Selain membaca tutorial, saya juga menonton video di youtube yang berkaitan dengan cara membuat proyek pada Django untuk pemula
