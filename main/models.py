@@ -28,6 +28,7 @@ class Product(models.Model):
     brand = models.CharField()
     product_viewer = models.PositiveIntegerField(default=0)
     size = models.CharField()
+    
 
     # method untuk mengembalikan nama produk yang dijual
     def __str__(self):
@@ -54,6 +55,7 @@ class Product(models.Model):
         self.product_viewer += 1
         self.save()
     
+
 
  
 
