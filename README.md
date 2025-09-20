@@ -1,9 +1,10 @@
 Nama: Nisriina Wakhdah Haris
-NPM: 2406360445
-Kelas: PBP - B
+ NPM: 2406360445
+ Kelas: PBP - B
 link menuju app PWS: https://nisriina-wakhdah-footballshop.pbp.cs.ui.ac.id/
 
-Tugas INDIVIDU 2
+
+TUGAS INDIVIDU 2
 
 1. Cara saya mengimplementasikan daftar checklist yang harus dikerjakan adalah, sebagai berikut:
     - Hal pertama yang saya lakukan adalah membaca tutorial 0 dan 1 agar saya benar-benar paham fungsi setiap langkah yang harus dilakukan
@@ -83,3 +84,11 @@ TUGAS INDIVIDU 3
 
 - Screenshot akses url JSON by ID
 ![alt text](https://github.com/NisriinaWakhdah/football-shop/blob/master/Screenshot%202025-09-14%20204639.png?raw=true)
+
+
+TUGAS INDIVIDU 4
+1. username: soKlin
+   pass : dijaminBersih7
+
+   username: maruko.chan
+   pass: chibihaha22

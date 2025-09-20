@@ -1,9 +1,12 @@
 import uuid
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
     # membuat tipe-tipe kategori dari barang-barang yang dijual
     category_choices = [('perlengkapanUtama', 'Perlengkapan Utama'),
                         ('bolanAksesrori', 'Bola dan Aksesoris'),
