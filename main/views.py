@@ -20,6 +20,7 @@ def show_main(request):
         product_list = Product.objects.filter(stock__gt=0, stock__lte=10)
     else:
         product_list = Product.objects.filter(user=request.user)
+        
     context = {
             'npm': '2406360445',
             'name': 'Nisriina Wakhdah Haris',
