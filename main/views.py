@@ -16,6 +16,8 @@ def show_main(request):
     filter_type = request.GET.get("filter", "all")
     if filter_type == "all":
         product_list = Product.objects.all()
+    elif filter_type == "limitedEdition":
+        product_list = Product.objects.filter(stock__gt=0, stock__lte=10)
     else:
         product_list = Product.objects.filter(user=request.user)
     context = {
@@ -28,6 +30,7 @@ def show_main(request):
     }
     return render(request, "main.html", context)
 
+@login_required(login_url='/login')
 def add_product(request):
     form = ProductForm(request.POST or None)
 

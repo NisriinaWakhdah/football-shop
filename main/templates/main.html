@@ -23,6 +23,9 @@
 <a href="?filter=my">
     <button type="button">My Products</button>
 </a> 
+<a href="?filter=limitedEdition">
+    <button type="button">Limited Edition</button>
+</a>
 
 {% if not product_list %}
 <p>Belum ada data produk pada football shop.</p>
@@ -40,7 +43,8 @@
         <b>Limited Edition</b>{% endif %}
         {% if product.is_available %} |
         <b>Available</b>{% endif %} |<i>{{ product.launch_at|date:"d M Y H:i" }}</i>
-        | Views: {{product.product_viewer}}</p>
+        | Views: {{product.product_viewer}} | Stock: {{product.stock}}
+    </p>
 
     {% if product.thumbnail %}
     <img src="{{ product.thumbnail }}" alt="Product thumbnail" width="100">

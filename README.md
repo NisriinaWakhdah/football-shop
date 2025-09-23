@@ -3,8 +3,8 @@ Nama: Nisriina Wakhdah Haris
  Kelas: PBP - B
 link menuju app PWS: https://nisriina-wakhdah-footballshop.pbp.cs.ui.ac.id/
 
-
-TUGAS INDIVIDU 2
+<details>
+<Summary><b>TUGAS INDIVIDU 2</b></Summary>
 
 1. Cara saya mengimplementasikan daftar checklist yang harus dikerjakan adalah, sebagai berikut:
     - Hal pertama yang saya lakukan adalah membaca tutorial 0 dan 1 agar saya benar-benar paham fungsi setiap langkah yang harus dilakukan
@@ -58,8 +58,10 @@ sumber gambar: https://www.biznetgio.com/news/django
 
 6.  Feedback untuk kakak asdos di Tutorial 1 adalah: terima kasih sudah fast respon saat saya bertanya di forum diskusi discord, sudah stand-by dan hadir untuk membantu kami saat mengalami kendala, dan terima kasih juga karena telah membuatkan langkah-langkah tutorial yang jelas dan mudah dimengerti sehingga saya dapat mengikutinya dengan baikk
 
+</details>
 
-TUGAS INDIVIDU 3
+<details>
+<Summary><b>TUGAS INDIVIDU 3</b></Summary>
 
 1. Dalam mengimplementasikan sebuah platform, kita memerlukan data delivery agar data dapat diakses, diproses, dan didistribusikan secara efisien dan tepat waktu. Selain itu, data delivery memiliki peran penting dalam memastikan akurasi data, mendekteksi kesalahan, menjaga kualitas data, dan memastikan data memenuhi suatu kriteria tertentu. Oleh karena itu, data delivery dapat meningkatkan efisiensi operasional, mempercepat pengambilan keputusan, dan memastikan bahwa semua orang yang terlibat memiliki akses ke informasi yang sama dan konsisten sehingga dapat mengurangi kesalahan dalam penggunaan data
 
@@ -85,10 +87,57 @@ TUGAS INDIVIDU 3
 - Screenshot akses url JSON by ID
 ![alt text](https://github.com/NisriinaWakhdah/football-shop/blob/master/Screenshot%202025-09-14%20204639.png?raw=true)
 
+</details>
 
-TUGAS INDIVIDU 4
-1. username: soKlin
-   pass : dijaminBersih7
+<details>
+<Summary><b>TUGAS INDIVIDU 4</b></Summary>
 
-   username: maruko.chan
-   pass: chibihaha22
+1. Django AuthenticationForm adalah formulir autentikasi bawaan Django yang digunakan untuk memverifikasi kredensial pengguna saat login ke suatu aplikasi. Formulir autentikasi ini menangani akun pengguna, grup, izin, dan sesi pengguna berbasis cookie. Kelebihan Django AuthenticationForm adalah:
+    - Autentikasi pengguna ini telah diuji secara ekstensif oleh banyak  aplikasi yang menggunakannya dalam lingkup produksi sehingga fitur ini terbukti bekerja dengan baik dalam dunia nyata
+    - Sistem ini mendapat dukungan resmi langsung dari para pengelola atau komunitas Django sehingga ada jaminan perbaikan dan keamanan dari sumber resmi
+    - Sistem ini fleksibel karena dibangun dengan cara yang sangat generik sehingga bisa disesuaikan dengan kebutuhan proyek dan dengan mempertimbangkan bahwa terdapat banyak pengguna yang mungkin perlu memperluas fungsionalitas aplikasinya
+    - Syntaxnya cenderung simpel dan mudah dipahami karena ditulis dengan bahasa python 
+Selain itu, kekurangannya adalah:
+    - Django menyediakan banyak fitur dan alat bawaan untuk autentikasi dan lainnya sehingga memerlukan waktu yang lebih lama untuk dipelajari dan dipahami oleh pengembang dan tidak langsung berlaku untuk sistem autentikasi yang lain
+    - Sistem autentikasi Django dibuat fleksibel dan generik (tidak spesifik untuk satu jenis aplikasi saja) sehingga tidak dapat langsung disesuaikan untuk kebutuhan tiap aplikasi sehingga pengembang harus menyesuaikannya sendiri dengan kebutuhan yang ada, hal ini bisa merepotkan
+    - Sistem autentikasi yang sederhana ini bisa saja tidak cocok untuk aplikasi yang membutuhkan fitur yang lebih kompleks
+
+2. Perbedaan autentikasi dan otorisasi adalah autentikasi berfungsi untuk memverifikasi dan mengonfirmasi kebenaran identitas pengguna atau layanan yang mencoba untuk mengakses sistem, sedangkan otorisasi bertujuan untuk memberi pengguna atau layanan izin mengakses (hak akses) data atau melakukan tindakan tertentu. Django mengimplementasikan autentikasi dengan menggunakan fungsi bawaan Django dan diimport melalui: from django.contrib.auth import authenticate, login, logout. Fitur utamanya adalah melakukan autentikasi, login, dan logout, saat user berhasil login (authenticate() + login()), Django membuat session ID yang bersifat rahasia dan menyimpannya dalam cookie di browser pengguna dan saat user melakukan logout, session ID dan cookie tersebut akan dihapus. Selain itu, Django menyediakan sistem permissions, groups dan decorators/mixins yang dapat digunakan untuk mengatrur izin akses pengguna, contoh decorator yang dapat digunakan adalah login_required dan permission_required dari sistem autentikasi Django (diimport melalui from django.contrib.auth.decorators import login_required, permission_required). Decorator ini diletakkan di atas kode fungsi yang menurut kita tidak dapat diakses oleh sembarang pengguna, di mana hanya pengguna khusus saja yang dapat diperbolehkan untuk mengaskes fungsi tersebut, misalnya pengguna yang sudah memiliki akun dan berhasil login. Decorators tidak mengubah isi kode fungsi tersebut, melainkan dapat kita gunakan untuk menambah fungsionalitas suatu fungsi
+
+3. Penyimpanan session adalah menyimpan data dalam pasangan kunci-nilai dalam peramban web, namun penyimpanan tersebut hanya tersedia hingga sesi tersebut aktif, di mana jika user keluar dari situs web, maka semua data yang tersimpan akan dihapus. Kelebihan penyimpanan sesi adalah:
+    - Keamanan data terjamin karena data disimpan selama sesi berlangsung dan otomatis dihapus ketika sesi berakhir
+    - Data yang disimpan bersifat sementara sehingga dapat meminimalkan kekacauan dan ruang penyimpanan di situs web user
+    - Penyimpanan ini mudah diimplementasikan dan digunakan pada aplikasi daring karena APInya mudah dipahami
+    Selain itu, kekurangannya adalah:
+    - Penyimpanan sesi terbatas karena tergantung dengan webnya dan biasanya hanya memiliki batas penyimpanan dari 5 sampai 10 MB sehingga tidak sesuai untuk penyimpanan skala besar
+    - User bisa saja mengalami kesulitan untuk mengakses data karena data akan dihapus ketika sesi berakhir karena penyimpanan ini bergantung pada sesi penulusuran yang sedang aktif
+    - Cakupan penyimpanan seso adalah penelusuran saat ini yang tidak bisa dibagikan ke seluruh tab atau jendela aplikasi web sehingga proses berbagi data antar komponen aplikasi yang sama atau berbeda dapat menjadi masalah
+Selain itu, terdapat penyimpanan cookies, yaitu file teks kecil (berisi data) yang disimpan pada perangkat pengguna ketika ia mengakses situs web untuk pertama kalinya. Kelebihan cookie antara lain adalah:
+    - Cookie digunakan untuk mengigat preferensi pengguna sehingga dapat menciptakan pengalaman yang lebih personal bagi pengguna dan halaman web dapat dimuat dengan cepat
+    - Menyimpan data seperti informasi login atau isi keranjang belanja sehingga dapat menyederhanakan cara user berinteraksi dengan situs web
+    - Membantu meningkatkan kinerja halaman web dan menempati sedikit memori melalui penyimpanan data dalam cache dan mengurangi permintaan server
+    - Mudah digunakan karena browser otomatis mengirim cookie ke server setiap request
+    Berikut ini adalah kekurangan penyimpanan cookie:
+    - Data yang disimpan dapat dicuri dengan serangan XXS dan disalahgunakan tanpa sepengetahuan pemiliknya sehingga keamanannya tidak terjamin
+    - Jika user mematikan cookie, maka cookie mungkin tidak berfungsi secara efektif di setiap perangkat karena beberapa fitur aplikasi tidak akan jalan yang mengakibatkan pengalaman user yang tidak konsisten
+    - Tidak dapat menyimpan data yang complex dan hanya bisa menyimpan data berbentuk teks biasa
+    - Pengguna dapat menghapus cookie sehingga dapat kehilangan status login,kehilangan preferensi atau pengaturan, dan tidak bisa mengakses ke session lama, seperti isi keranjang belanja, draft, dll
+
+4. Sebenarnya penggunaan cookie aman secara defaultnya karena hanya berupa data teks dan tidak dapat mentrasfer malware atau virus. Akan tetapi data yang disimpan di dalam cookie berisiko untuk dicuri dan disalahgunakan oleh pihak yang tidak bertanggung jawab sehingga dapat merugikan user. Hal ini dapat terjadi apabila kita tidak memberikan pengamanan pada cookie yang ada, misalnya cookie tidak dienkripsi dan tidak dikirim melalui HTTPS. Risiko potensial yang harus diwaspadai adalah kasus Cross Site Scripting (XSS) di mana seseorang bisa mencuri cookies dari pengguna yang sudah melakukan login ke sebuah website dengan cara menyuntikkan kode/script berbahaya yang digunakan untuk mencuri cookie user. Selain itu, terdapat kasus pembajakan sesi (session hijacking) di mana hacker dapat mencegat cookie yang dikirimkan melalui jaringan yang tidak aman, seperti wi-fi publik, dan juga terdapat kasus Cross-site Request Forgery (CSRF) di mana hacker melakukan request autentikasi atau cookie pengguna kepada user yang sedang mengakses aplikasi web tersebut untuk mendapatkan informasi penting yang dimiliki user. Cara Django menangani hal ini adalah dengan mengatur keamanan cookie menggunakan beberapa settings bawaan, seperti SESSION_COOKIE_SECURE = True (hanya dikirim lewat HTTPS), SESSION_COOKIE_HTTPONLY = True (mencegah skrip sisi klien mengakses cookie), SESSION_COOKIE_SAMESIT (Membantu mencegah kebocoran informasi, menjaga privasi pengguna , dan memberikan perlindungan terhadap serangan CSRF), CSRF_COOKIE_SECURE = True, dan CSRF_COOKIE_HTTPONLY = True untuk melindungi token CSRF. Oleh karena itu, aman atau tidaknya suatu cookie tergantung pada bagaimana cookie tersebut dikelola dan diamankan. Jika cookie disimpan dengan benar dan diberikan perlindungan khusus, maka risiko pencurian data cookie dapat diminimalisir dibandingkan dengan cookie yang tidak diberi proteksi sama sekali.
+
+5. Cara saya mengimplementasikan checklist tersebut adalah:
+    - Pertama saya membuka folder football-shop dan membuat fungsi untuk registrasi, login, dan logout pada file views.py. Setelah membuat fungsi-fungsi tersebut, saya membuka urls.py pada folder main dan melakukan import fungsi2 yang sudah dibuat di views.py untuk menambahkan urlPatterns agar user dapat mengakses fungsi2 tersebut. Selain itu, pada file views.py saya menambahkan import datetime, HttpResponseRedirect, dan reverse agar dapat menggunakan dan menyimpan cookie yang berisi timestamp terkahir kali pengguna melakukan login. Setelah itu, menambahkan key-value baru, yaitu last_login pada fungsi show_main ke dalam variabel context agar dapat mengakses data di cookie yang sudah terdaftar dan agar informasi last_login dapat ditampilkan di halaman utama aplikasi. Saya juga menambahkan dekorator pada fungsi show_main, show_product, dan add_product agar halaman utama dan product hanya bisa diakses oleh pengguna yang sudah terautentikasi
+    - Membuat template dengan tipe html untuk fungsi regitrasi, login, dan logout yang akan ditampilkan di halaman web. Selain itu, pada template registasi.html saya menambahkan button untuk mereset input yang dimasukkan pengguna agar user dapat menghapusnya sekaligus saat ada kesalahan dalam menuliskan username atau password saat regitrasi
+    - Setelah berhasil membuat fungsi2 tersebut dan templatenya, saya membuka file models.py yang berada di folder main dan melakukan import User. Setelah berhasil mengimport User ke dalam model, saya menambahkan kode user = models.ForeignKey(User, on_delete=models.CASCADE, null=True) pada class Product dan kode ini berfungsi untuk menghubungkan suatu product dengan user. Setelah itu menambahkan beberapa kode pada add_product agar setiap product yang dibuat akan otomatis terhubung dengan pengguna yang membuatnya dan menambahkan kode yang berguna untuk memfilter produk pada fungsi show_main sesuai dengan request dari user, dan menambahkan tombol untuk memfilter produk pada halaman uatama di file main.html dan juga menambahkan nama penjual produk pada file detail_product.html
+    - Melakuka python makemigrations dan migrate agar perubahan pada model dapat disimpan dan diperbarui
+    - Menjalankan program secara lokal dan membuat 2 akun pengguna dan setiap pengguna menjual 3 barang (dummy data) untuk mengetes apakah kode berjalan dengan baik
+    - Setelah kode dipastikan dapat berjalan dengan baik, saya melakukan add, commit, dan push ke GitHub dan push ke PWS
+
+
+
+    username: soKlin
+    pass : dijaminBersih7
+
+    username: maruko.chan
+    pass: chibihaha22
+</details>
