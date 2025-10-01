@@ -148,5 +148,7 @@ Margin digunakan untuk memberi ruang atau jarak antar elemen yang ada di html, s
 
 4. Flexbox (Flexible Box Layout) merupakan sebuah model tata letak satu dimensi untuk mengatur, menyelaraskan, dan mendistribusikan ruang di antara item dalam container. Flexbox berguna untuk mempermudah pembuatan tata letak yang responsif di berbagai perangkat, memudahkan penyelarasan item baik secara horizontal atau vertikal. Sedangkan grid merupakan sistem tata letak yang menggunakan struktur dua dimensi (baris dan kolom) untuk mengatur elemen pada halaman web. Grid berguna untuk membangun tata letak yang fleksibel dan dapat beradaptasi dengan berbagai macam ukuran layar, kita dapat mengontrol penuh posisi dan ukuran elemen dalam grid karena kontrolnya lebih presisi, dan grid dapat membantu kita mengatur tata letak pada kedua sumbu (baris dan kolom) secara bersamaan karena strukturnya dua dimensi
 
-html bukan bahasa pemrograman, melainkan bahasa mark-up, jika tdk ada css di html, maka style didapatkan dari browser
-prioritas inline style lebih tinggi dibandingkan external style
+5. Cara saya mengimplementasikan checklist2 di atas adalah:
+- Membuka folder tempat menyimpan proyek lalu membuka file views.py pada folder main untuk membuat fungsi edit dan delete
+- Setelah itu, membuat file edit_product.html dan delete_product.html pada folder template di main untuk ditampilkan pada user dan saya melakukan pengecekan kondisi di mana hanya user yang menambahkan produk tersebut yang dapat melakukan edit dan delete product
+- Setelah membuat templatenya, saya melakukan routing url di file urls.py dengan cara mengimport fungsi yang sudah dibuat di views.py lalu mendefinisikan pathnya agar dapat diakses oleh user, 
