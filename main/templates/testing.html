@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Football Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="products">
+          <div clas="product">
+              <div class="header">  
+                <h2>{{product.name}}</h2>
+              </div>
+              <div class="status">
+                  {% if product.is_featured %}
+                    <span class="featuring">
+                      Featured
+                    </span>
+                  {% endif %}
+                  {% if product.is_limited %}
+                    <span class="isLimited">
+                      Limited Edition
+                    </span>
+                  {% endif %}
+              </div>
+              <div class="category">
+                <span>{{product.get_category_display}}</span>
+              </div>
+              <div class="image">
+                  {% if product.thumbnail %}
+                    <img src="{{ product.thumbnail }}" alt="{{ product.name }}">
+                  {% else %}
+                    <div class="alternative"></div>
+                  {% endif %}
+              </div>
+              <div class="price">
+                <h3 class="productName">
+                  <a href="{% url 'main:show_product' product.id %}" class="showProduct">
+                    {{ product.name }}
+                  </a>
+                </h3>
+                <span>{{product.price}}</span>
+              </div>
+               <p class="shortDetails">
+                {{ product.description|truncatewords:20 }}
+              </p>
+              <div class="texts">
+                <div class="footer">
+                  <time datetime="{{ product.launch_at|date:'c' }}">
+                    {{ product.launch_at|date:"M j, Y" }}
+                  </time>
+                  <span class="dot">•</span>
+                  <span>{{ product.product_viewer }} views</span>
+                </div>
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+          </div>
+  
+        <!-- Action Buttons -->
+        <div class="btn">
+          {% if user.is_authenticated and product.user == user %}
+            <div class="users">
+              <a href="{% url 'main:show_product' product.id %}" class="readMore">
+                Read more
+              </a>
+              <div class="actions">
+                <a href="{% url 'main:edit_product' product.id %}" class="edit">
+                  Edit
+                </a>
+                <a href="{% url 'main:delete_product' product.id %}" class="delete">
+                  Delete
+                </a>
+              </div>
+            </div>
+          {% else %}
+            <div class="unknown">
+              <a href="{% url 'main:show_product' product.id %}" class="readMore">
+                Read more →
+              </a>
+            </div>
+          {% endif %}
+      </div>
+  </body>
+</html>

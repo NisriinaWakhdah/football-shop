@@ -1,32 +1,89 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Football Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </head>
 
-{% block meta %}
-<title>Login</title>
-{% endblock meta %}
+  <body>
+    <div class="container">
+      <div class="form-box login">
 
-{% block content %}
-<div class="login">
-  <h1>Login</h1>
+        <!-- Form Errors Display -->
+        {% if form.non_field_errors %}
+          <div class="mb-6">
+            {% for error in form.non_field_errors %}
+              <div class="px-4 py-3 rounded-md text-sm border bg-red-50 border-red-200 text-red-700">
+                {{ error }}
+              </div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
-  <form method="POST" action="">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input class="btn login_btn" type="submit" value="Login" /></td>
-      </tr>
-    </table>
-  </form>
+        {% if form.errors %}
+          <div class="mb-6">
+            {% for field, errors in form.errors.items %}
+              {% if field != '__all__' %}
+                {% for error in errors %}
+                  <div class="px-4 py-3 rounded-md text-sm border bg-red-50 border-red-200 text-red-700 mb-2">
+                    <strong>{{ field|title }}:</strong> {{ error }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        <form method="POST" action="">
+          {% csrf_token %}
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <i class="fa-solid fa-circle-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" name="password" placeholder="Password"required>
+                <i class="fa-solid fa-user-lock"></i>
+            </div>
+            <div class="forgot-link">
+              <a href="#">Forgot password?</a>
+              
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <p>or login with social platforms</p>
+            <div class="social-icons">
+              <a href="#"><i class="fa-brands fa-google-plus-g"></i></a>
+              <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-github"></i></a>
+              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </form>
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %} Don't have an account yet?
-  <a href="{% url 'main:register' %}">Register Now</a>
-</div>
-
-{% endblock content %}
+        {% if messages %}
+        <div class="message-display">
+            {% for message in messages %}
+            <div>
+              {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %} 
+      </div>
+      <div class="welcome">
+          <div class="toggle-left">
+              <h1>Hello, Welcome</h1>
+              <p>Don't have an account yet?</p>
+              <a href="{% url 'main:register' %}">
+                <button class="btn-register">Register</button>
+              </a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

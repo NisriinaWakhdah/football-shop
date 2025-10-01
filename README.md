@@ -133,11 +133,20 @@ Selain itu, terdapat penyimpanan cookies, yaitu file teks kecil (berisi data) ya
     - Menjalankan program secara lokal dan membuat 2 akun pengguna dan setiap pengguna menjual 3 barang (dummy data) untuk mengetes apakah kode berjalan dengan baik
     - Setelah kode dipastikan dapat berjalan dengan baik, saya melakukan add, commit, dan push ke GitHub dan push ke PWS
 
-
-
     username: soKlin
     pass : dijaminBersih7
 
     username: maruko.chan
     pass: chibihaha22
 </details>
+
+    TUGAS INDIVIDU 5
+2. Responsive design merupakan sebuah pendekatan yang bertujuan untuk membuat halaman web dapat beradaptasi dan memberikan pengalaman tampilan yang optimal pada berbagai macam perangkat, mulai dari monitor komputer desktop hingga ponsel. Sebuah website yang responsif akan secara otomatis menyesuaikan tata letak, konten, dan fungsionalitasnya berdasarkan ukuran layar, resolusi, dan orientasi perangkat yang digunakan. Oleh karena itu, responsive design menjadi konsep yang penting dalam pengembangan aplikasi web karena memiliki tujuan untuk memastikan bahwa pengguna dapat dengan mudah mengakses dan berinteraksi pada berbagai macam perangkat yang digunakan 
+
+3. Perbedaan antara margin, padding, dan border adalah:
+Margin digunakan untuk memberi ruang atau jarak antar elemen yang ada di html, seperti sebarapa dekat atau seberapa jauh antara satu elemen dengan elemen yang lain sehingga memengaruhi tata letak keseluruhan halaman. Selain itu, margin dapat digunakan untuk membantu mengontrol tata letak elemen-elemen pada layar yang berbeda dan dapat digunakan untuk mencegah elemen saling tumpang tindih. Sedangkan border digunakan untuk menambahkan outline atau garis tepi di sekeliling elemen yang dapat membantu kita untuk melihat batas antar elemen dan sebagai bingkai untuk memisahkan data sehingga lebih mudah dibaca dan lebih rapih. Padding berfungsi untuk memberikan ruang di antara konten dan border dari konten tersebut sehingga dapat mengatur seberapa jauh atau dekat jarak antara konten dan bordernya. Selain itu, padding dapat digunakan untuk memberikan ruang tambahan di sekitar konten pada layar yang lebih kecil sehingga tata letak halaman web menjadi lebih rapih, mudah dipahami, dan menarik.
+
+4. Flexbox (Flexible Box Layout) merupakan sebuah model tata letak satu dimensi untuk mengatur, menyelaraskan, dan mendistribusikan ruang di antara item dalam container. Flexbox berguna untuk mempermudah pembuatan tata letak yang responsif di berbagai perangkat, memudahkan penyelarasan item baik secara horizontal atau vertikal. Sedangkan grid merupakan sistem tata letak yang menggunakan struktur dua dimensi (baris dan kolom) untuk mengatur elemen pada halaman web. Grid berguna untuk membangun tata letak yang fleksibel dan dapat beradaptasi dengan berbagai macam ukuran layar, kita dapat mengontrol penuh posisi dan ukuran elemen dalam grid karena kontrolnya lebih presisi, dan grid dapat membantu kita mengatur tata letak pada kedua sumbu (baris dan kolom) secara bersamaan karena strukturnya dua dimensi
+
+html bukan bahasa pemrograman, melainkan bahasa mark-up, jika tdk ada css di html, maka style didapatkan dari browser
+prioritas inline style lebih tinggi dibandingkan external style
