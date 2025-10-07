@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <article class="bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300 overflow-hidden">
   <!-- Thumbnail -->
   <div class="aspect-[16/9] relative overflow-hidden">
@@ -46,6 +45,7 @@
         {{ product.name }}</a>        
     </h3>
     <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 leading-tight">Rp {{product.price}}</h3>
+    <!--<h3 class="text-lg font-semibold text-gray-500 mb-3 line-clamp-2 leading-tight">Size: {{product.size}}</h3> -->
     
     <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
       {{product.description|truncatewords:20 }}

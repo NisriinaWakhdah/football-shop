@@ -111,7 +111,7 @@ Selain itu, kekurangannya adalah:
     Selain itu, kekurangannya adalah:
     - Penyimpanan sesi terbatas karena tergantung dengan webnya dan biasanya hanya memiliki batas penyimpanan dari 5 sampai 10 MB sehingga tidak sesuai untuk penyimpanan skala besar
     - User bisa saja mengalami kesulitan untuk mengakses data karena data akan dihapus ketika sesi berakhir karena penyimpanan ini bergantung pada sesi penulusuran yang sedang aktif
-    - Cakupan penyimpanan seso adalah penelusuran saat ini yang tidak bisa dibagikan ke seluruh tab atau jendela aplikasi web sehingga proses berbagi data antar komponen aplikasi yang sama atau berbeda dapat menjadi masalah
+    - Cakupan penyimpanan session adalah penelusuran saat ini yang tidak bisa dibagikan ke seluruh tab atau jendela aplikasi web sehingga proses berbagi data antar komponen aplikasi yang sama atau berbeda dapat menjadi masalah
 Selain itu, terdapat penyimpanan cookies, yaitu file teks kecil (berisi data) yang disimpan pada perangkat pengguna ketika ia mengakses situs web untuk pertama kalinya. Kelebihan cookie antara lain adalah:
     - Cookie digunakan untuk mengigat preferensi pengguna sehingga dapat menciptakan pengalaman yang lebih personal bagi pengguna dan halaman web dapat dimuat dengan cepat
     - Menyimpan data seperti informasi login atau isi keranjang belanja sehingga dapat menyederhanakan cara user berinteraksi dengan situs web
@@ -168,4 +168,37 @@ Margin digunakan untuk memberi ruang atau jarak antar elemen yang ada di html, s
     - Saya juga melakukan perubahan desain pada halaman login.html dan membuat file login.css untuk medesain elemen-elemen di file html agar bervariasi, saat membuat desain tersebut saya melihat tutorial di youtube dan sumbernya adalah https://youtu.be/Z_AbWH-Vyl8?si=-N7nUs-pRRYJCyHR. Serta melakukan perubahan pada file register.html, main.html, detail_product.html, dan add_product.html agar visualisasinya lebih menarik untuk dilihat pengguna, seperti menampilkan harga, status, dan kategori produk
     - Setelah itu menambahkan navigation bar untuk ditampilkan pada device dan desktop dengan cara membuat file navbar.html pada folder main/templates dan disesuaikan desainnya pada device yang digunakan 
 </details>
+
+<details>
+<Summary><b>TUGAS INDIVIDU 6</b></Summary>
+
+1. Perbedaan antara synchronous request dan asynchronous request adalah:
+    - Synchronous request mencegah DOM atau browser mengeksekusi kode tambahan hingga server merespons sedangkan asynchronous request tidak akan mencegah DOM atau peramban mengeksekusi kode tambahan hingga server merespons
+    - Pada synchronous requset kita tidak dapat membuat request lain sampai kita menerima respons untuk request yang sebelumnya sedangkan pada asynchronous request kita dapat melakukan beberapa request secara bersamaan 
+    - Pada asynchornous request, browser atau DOM tidak akan menunggu respons melainkan akan langsung mengeksekusi kode, sedangkan pada synchronous request browser atau DOM akan diblokir hingga server merespons sebelum melanjutkan eksekusi kode berikutnya
+
+2. Berikut ini adalah alur cara kerja AJAX di Django, yaitu:
+    - Sebuah event terjadi pada halaman web, seperti user menenkan tombol cancel atau reset data
+    - JavaScript membuat objek XMLHttpRequest atau menggunakan fetch() dan mengirimkan HTTP Request ke server secara asinkron
+    - Permintaan ini dapat berupa GET atau POST, yang dikirimkan ke URL tertentu yang ditangani oleh view Django
+    - View Django menerima dan memeriksa permintaan tersebut apakah permintaan tsb berasal dari AJAX, jika valid maka django akan membuat respons yang biasanya dalam bentuk JSON dengan menggunakan JsonResponse()
+    - Server akan menerima, lalu memprosesnya, dan mengirimkan data tersebut kembali ke browser
+    - Browser kemudian menerima data tersebut dan langsung menampilkan data yang sudah diterima di halaman website tanpa harus melakukan reload
+
+3. Keuntungan menggunakan AJAX adalah:
+    - Website yang menggunakan AJAX akan lebih menarik serta cepat tanpa harus berganti halaman saat melakukan suatu request
+    - Penggunaan AJAX dapat mengurangi beban jaringan, mengurangi penggunaan bandwith, dan hanya mengambil data yang dibutuhkan saja sehingga kinerja dan kecepatan aplikasi meningkat
+    - AJAX mendukung proses asinkron sehingga pengguna dapat melakukan beberapa request secara bersamaan tanpa harus menunggu respons dari request sebelumnya
+    - User dapat berinteraksi dengan aplikasi tanpa harus menunggu seluruh halaman dimuat ulang, membuat situs lebih cepat dan responsif
+
+4. Berikut ini adalah cara memastikan keamanan saat menggunakan AJAX untuk fitur login dan registrer di Django, yaitu:
+    - Memastikan CSRF token selalu dikirimkan dengan AJAX POST request dan pada setiap XMLHttpRequest, setel sebuah penyesuaian header X-CSRFToken (seperti ditentukan oleh pengaturan CSRF_HEADER_NAME) pada nilai dari token CSRF.
+    - Memvalidasi input di sisi sever untuk memastikan data disanitasi dan aman bahkan jika ada potensi kerusakan dalam kode JavaScript
+    - Menggunakan HTTPS untuk semua request AJAX login atau register agar data terenkripsi
+    - Menerapkan perlindungan tambahan seperti rate limiting untuk mencegah brute-force login dan CAPTCHA
+
+5. AJAX memengaruhi pengalaman pengguna (User Experience) dengan membuat konten tertentu di halaman web diperbarui secara asinkron tanpa harus me-reload seluruh halaman terlebih dahulu. Selain itu, dengan menggunakan AJAX user dapat melakukan beberapa permintaan sekaligus tanpa harus menunggu respons dari permintaan sebelumnya, sehingga membuat aplikasi web lebih cepat, responsif, dan mengurangi waktu tunggu user. Penerapan AJAX pada website juga dapat memberikan interaksi real-time seperti chat, notifikasi, search, dll sehingga pengguna dapat dengan mudah berinteraksi dan mendapat umpan balik yang cepat dari sistem. Dengan menggunakan AJAX, tidak hanya membuat aplikasi lebih efisien tetapi juga meningkatkan perfroma aplikasi karena AJAX hanya mengambil data yang diperlukan saja sehingga dapat mengurangi beban jaringan dan penggunaan bandwith. Penggunaan AJAX juga membuat website lebih user-friendly dan menyenangkan karena pengguna tidak akan terganggu oleh proses reload yang membuat halaman berkedip atau loading lama, perubahan halaman yang mulus, dan pengguna tidak kehilangan posisi terakhirnya karena halaman tidak perlu di-refresh secara penuh
+</details>
+
+
 

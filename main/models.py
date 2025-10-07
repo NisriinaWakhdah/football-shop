@@ -9,9 +9,9 @@ class Product(models.Model):
     
     # membuat tipe-tipe kategori dari barang-barang yang dijual
     category_choices = [('perlengkapanUtama', 'Perlengkapan Utama'),
-                        ('bolanAksesrori', 'Bola dan Aksesoris'),
+                        ('bolanAksesoris', 'Bola dan Aksesoris'),
                         ('peralatanLatihan', 'Peralatan Latihan'),
-                        ('perlatanWasit', 'Peralatan Wasit'),
+                        ('peralatanWasit', 'Peralatan Wasit'),
                         ('sportCare', 'Sport Care'),
                         ('update', 'Update'),
                         ('exclusive', 'Exclusive'),
@@ -57,7 +57,16 @@ class Product(models.Model):
     def increment_views(self):
         self.product_viewer += 1
         self.save()
-    
+
+# class Book(models.Model):
+#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+#     title = models.CharField(max_length=255)
+
+# class Author(models.Model):
+#     bio = models.TextField()
+#     books = models.ManyToManyField(Book)
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
 
 
  

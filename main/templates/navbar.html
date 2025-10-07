@@ -1,9 +1,9 @@
-<nav class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 shadow-sm z-50">
+<nav class="fixed top-0 left-0 w-full bg-[#6E8CFB] shadow-sm z-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
           <h1 class="text-xl font-semibold text-gray-900">
-            <span class="text-green-600">Football</span> Shop
+            <span class="text-[#3C467B]">Football</span> <span class="text-white">Shop</span>
           </h1>
         </div>
         
@@ -24,7 +24,7 @@
           {% if user.is_authenticated %}
             <div class="text-right">
               <div class="text-sm font-medium text-gray-900">{{ name|default:user.username }}</div>
-              <div class="text-xs text-gray-500">{{ npm|default:"Student" }} - {{ class|default:"Class" }}</div>
+              <div class="text-xs text-gray-800">{{ npm|default:"Student" }} - {{ class|default:"Class" }}</div>
             </div>
             <a href="{% url 'main:logout' %}" class="text-red-600 hover:text-red-700 font-medium transition-colors">
               Logout

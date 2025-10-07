@@ -2,13 +2,15 @@ import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from main.forms import ProductForm
 from main.models import Product
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -37,7 +39,7 @@ def add_product(request):
 
     if form.is_valid() and request.method == "POST":
         product_entry = form.save(commit = False)
-        product_entry.user = request.user
+        product_entry.user = request.user      
         product_entry.save()
         return redirect('main:show_main')
     
@@ -61,8 +63,26 @@ def show_xml(request):
 
 def show_json(request):
     product_list = Product.objects.all()
-    json_data = serializers.serialize("json", product_list)
-    return HttpResponse(json_data, content_type="application/json")
+    data = [
+        {
+            'id': str(product.id),
+            'name': product.name,
+            'description': product.description,
+            'category': product.category,
+            'thumbnail': product.thumbnail,
+            'product_views': product.product_viewer,
+            'launch_at': product.launch_at.isoformat() if product.launch_at else None,
+            'is_featured': product.is_featured,
+            'stock': product.stock,
+            'size': product.size,
+            'brand': product.brand,
+            'price': product.price,
+            'user': product.user.username if product.user else 'Anonymous',
+        }
+        for product in product_list
+    ]
+
+    return JsonResponse(data, safe=False)
 
 def show_xml_by_id(request, product_id):
     try:
@@ -74,11 +94,25 @@ def show_xml_by_id(request, product_id):
     
 def show_json_by_id(request, product_id):
     try:
-        product_item = Product.objects.get(pk=product_id)
-        json_data = serializers.serialize("json", [product_item])
-        return HttpResponse(json_data, content_type="application/json")
+        product = Product.objects.select_related('user').get(pk=product_id)
+        data = {
+            'id': str(product.id),
+            'name': product.name,
+            'description': product.description,
+            'category': product.category,
+            'thumbnail': product.thumbnail,
+            'product_views': product.product_viewer,
+            'launch_at': product.launch_at.isoformat() if product.launch_at else None,
+            'is_featured': product.is_featured,
+            'user':  product.user.username if product.user else 'Anonymous',
+            'stock': product.stock,
+            'size': product.size,
+            'brand': product.brand,
+            'price': product.price,
+        }
+        return JsonResponse(data)
     except Product.DoesNotExist:
-        return HttpResponse(stastus=404)
+        return JsonResponse({'detail': 'Not found'}, status=404)
     
 def register(request):
     form = UserCreationForm()
@@ -128,5 +162,53 @@ def delete_product(request, id):
     product = get_object_or_404(Product, pk=id)
     product.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
+
+@login_required(login_url='/login')
+@csrf_exempt
+@require_POST
+def add_product_entry_ajax(request):
+    name = request.POST.get("name")
+    description = request.POST.get("description")
+    category = request.POST.get("category")
+    price = request.POST.get("price")
+    thumbnail = request.POST.get("thumbnail")
+    is_featured = request.POST.get("is_featured") == 'on'  # checkbox handling
+    stock = request.POST.get('stock')
+    size = request.POST.get('size')
+    brand=request.POST.get('brand')
+    user = request.user
+
+    new_product = Product(
+        name=name, 
+        description=description,
+        category=category,
+        price=price,
+        thumbnail=thumbnail,
+        is_featured=is_featured,
+        stock=stock,
+        size=size,
+        brand=brand,
+        user=user,
+    )
+    new_product.save()
+
+    return JsonResponse({
+        "status": "success",
+        "message": "Product launched successfully!",
+        "product": {
+            "id": new_product.id,
+            "name": new_product.name,
+            "description": new_product.description,
+            "category": new_product.category,
+            "price": new_product.price,
+            "thumbnail": new_product.thumbnail,
+            "is_featured": new_product.is_featured,
+            "stock": new_product.stock,
+            "size": new_product.size,
+            "brand": new_product.brand,
+            "user": new_product.user.username,
+        }
+    })
+
 
 # Tinggal styling login, register, halaman utama, readme.md, dll
