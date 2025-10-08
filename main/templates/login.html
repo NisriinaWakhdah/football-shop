@@ -40,7 +40,7 @@
             {% endfor %}
           </div>
         {% endif %}
-        <form method="POST" action="">
+        <form id="loginForm" method="POST" action="">
           {% csrf_token %}
             <h1>Login</h1>
             <div class="input-box">
@@ -64,6 +64,8 @@
               <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
         </form>
+        
+        <div id="loginMessage" class="mt-4"></div>
 
         {% if messages %}
         <div class="message-display">
@@ -85,5 +87,30 @@
           </div>
       </div>
     </div>
+
+    <script>
+    document.querySelector("#loginForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const messageBox = document.getElementById("loginMessage");
+
+      const response = await fetch("{% url 'main:login_user_ajax' %}", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        messageBox.innerHTML = `<p class="text-green-600 font-semibold">${data.message}</p>`;
+        setTimeout(() => {
+          window.location.href = data.redirect_url;
+        }, 1000);
+      } else {
+        messageBox.innerHTML = `<p class="text-red-600 font-semibold">${data.message}</p>`;
+      }
+    });
+    </script>
   </body>
 </html>

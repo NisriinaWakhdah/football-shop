@@ -102,21 +102,34 @@
   }
 
   async function addProductEntry() {
-    await fetch("{% url 'main:add_product_entry_ajax' %}", {
-      method: "POST",
-      credentials: "include",
-      body: new FormData(document.querySelector('#productForm')),
-    })
+     try {
+      const response = await fetch("{% url 'main:add_product_entry_ajax' %}", {
+        method: "POST",
+        credentials: "include",
+        body: new FormData(document.querySelector('#productForm')),
+      });
 
-    document.getElementById("productForm").reset();
-    hideModal();
-      
-    // Show toast notification
-    showToast('Product is available now!', '', 'success');
-
-    // Dispatch custom event to notify main.html about new data
-    document.dispatchEvent(new CustomEvent('productLaunched'));
-
+      if (response.ok) {
+        // Reset form
+        document.getElementById("productForm").reset();
+        
+        // Hide modal
+        hideModal();
+        
+        // Dispatch custom event to notify main.html about new data
+        document.dispatchEvent(new CustomEvent('productLaunched'));
+        
+        // Show SUCCESS toast notification
+        showToast('Success!', 'Product has been added successfully!', 'success', 3000);
+      } else {
+        // Show ERROR toast if failed
+        showToast('Error!', 'Failed to add product. Please try again.', 'error', 3000);
+      }
+    } catch (error) {
+      console.error('Error adding product:', error);
+      showToast('Error!', 'An error occurred while adding product.', 'error', 3000);
+    }
+    
     return false;
   }
 

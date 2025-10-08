@@ -39,7 +39,7 @@
         </div>
       {% endif %}
 
-      <form method="POST" action="" class="space-y-5">
+      <form id="registerForm" method="POST" action="" class="space-y-5">
         {% csrf_token %}
         
         <div>
@@ -120,4 +120,33 @@
 >
   Click to Show Toast
 </button>
+<script>
+document.querySelector("#registerForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const messageBox = document.getElementById("registerMessage");
+
+  try {
+    const response = await fetch("{% url 'main:register_user_ajax' %}", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      showToast("Registrasi", data.message, data.status);
+      setTimeout(() => {
+        window.location.href = data.redirect_url;
+      }, 1500);
+    } else {
+      showToast("Registrasi", data.message, data.status);
+    }
+  } catch (error) {
+    showToast("Registrasi", data.message, data.status);
+  }
+});
+</script>
+
 {% endblock content %}

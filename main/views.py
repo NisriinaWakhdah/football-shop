@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.contrib.auth.models import User
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -126,6 +127,43 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 
+def register_user_ajax(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+
+        # Validasi sederhana
+        if password1 != password2:
+            return JsonResponse({
+                "status": "error",
+                "message": "Password tidak sama!"
+            })
+
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({
+                "status": "error",
+                "message": "Username sudah digunakan!"
+            })
+
+        # Buat user baru
+        user = User.objects.create_user(username=username, password=password1)
+        user.save()
+
+        # Login otomatis (opsional)
+        login(request, user)
+
+        return JsonResponse({
+            "status": "success",
+            "message": "Akun berhasil dibuat! Mengalihkan ke halaman login...",
+            "redirect_url": reverse("main:login")
+        })
+
+    return JsonResponse({
+        "status": "error",
+        "message": "Metode request tidak valid."
+    })
+
 def login_user(request):
     if request.method == 'POST':
       form = AuthenticationForm(data=request.POST)
@@ -139,6 +177,31 @@ def login_user(request):
         form = AuthenticationForm(request)
     context = {'form': form}
     return render(request, 'login.html', context)
+
+@csrf_exempt
+def login_user_ajax(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            response = JsonResponse({
+                "status": "success",
+                "message": "Login successful!",
+                "redirect_url": "/"
+            })
+            response.set_cookie('last_login', str(datetime.datetime.now()))
+            return response
+        else:
+            return JsonResponse({
+                "status": "error",
+                "message": "Invalid username or password."
+            }, status=401)
+    
+    return JsonResponse({"status": "error", "message": "Invalid request."}, status=400)
 
 def logout_user(request):
     logout(request)
@@ -192,23 +255,6 @@ def add_product_entry_ajax(request):
     )
     new_product.save()
 
-    return JsonResponse({
-        "status": "success",
-        "message": "Product launched successfully!",
-        "product": {
-            "id": new_product.id,
-            "name": new_product.name,
-            "description": new_product.description,
-            "category": new_product.category,
-            "price": new_product.price,
-            "thumbnail": new_product.thumbnail,
-            "is_featured": new_product.is_featured,
-            "stock": new_product.stock,
-            "size": new_product.size,
-            "brand": new_product.brand,
-            "user": new_product.user.username,
-        }
-    })
-
+    return HttpResponse(b"LAUNCH", status=201)
 
 # Tinggal styling login, register, halaman utama, readme.md, dll
