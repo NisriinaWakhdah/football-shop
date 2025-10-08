@@ -73,6 +73,9 @@
                 <h3 id="article-size" class="text-1xl font-semibold text-gray-500 mb-4">
                     <!-- Size produk -->
                 </h3>
+                <h3 id="article-stock" class="text-1xl font-semibold text-gray-500 mb-4">
+                    <!-- Size produk -->
+                </h3>
                 <div class="prose prose-lg max-w-none">
                     <div id="article-content-text" class="text-gray-700 leading-relaxed whitespace-pre-line text-base sm:text-lg">
                         <!-- Content will be inserted here -->
@@ -155,6 +158,12 @@ function renderArticle(product) {
     const articleSize = document.getElementById('article-size');
     if (articleSize) {
         articleSize.textContent = `Size: ${product.size}`;
+    }
+
+    // tampilkan stock
+    const articleStock = document.getElementById('article-stock');
+    if (articleStock) {
+        articleStock.textContent = `Stock: ${product.stock}`;
     }
     
     // Set badges

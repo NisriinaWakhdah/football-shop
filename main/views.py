@@ -209,17 +209,36 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-def edit_product(request, id):
-    product = get_object_or_404(Product, pk=id)
-    form = ProductForm(request.POST or None, instance=product)
-    if form.is_valid() and request.method == 'POST':
-        form.save()
-        return redirect('main:show_main')
+@csrf_exempt
+def edit_product_ajax(request, id):
+    if request.method == 'POST':
+        try:
+            product = Product.objects.get(pk=id, user=request.user)
 
-    context = {
-        'form': form
-    }
-    return render(request, "edit_product.html", context)
+            data = json.loads(request.body)
+            product.name = data.get('name', product.name)
+            product.price = data.get('price', product.price)
+            product.description = data.get('description', product.description)
+            product.stock = data.get('stock', product.stock)
+            product.category = data.get('category', product.category)
+            product.save()
+
+            return JsonResponse({
+                "status": "success",
+                "message": "Product updated successfully!",
+                "product": {
+                    "id": str(product.id),
+                    "name": product.name,
+                    "price": product.price,
+                    "description": product.description,
+                    "stock": product.stock,
+                    "category": product.category,
+                }
+            })
+        except Product.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Product not found or unauthorized"}, status=404)
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
 
 def delete_product(request, id):
     product = get_object_or_404(Product, pk=id)
