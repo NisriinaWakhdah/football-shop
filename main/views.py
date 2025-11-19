@@ -1,3 +1,5 @@
+import json
+import requests
 import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from main.forms import ProductForm
@@ -12,6 +14,8 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
+from django.utils.html import strip_tags
+
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -78,7 +82,7 @@ def show_json(request):
             'size': product.size,
             'brand': product.brand,
             'price': product.price,
-            'user': product.user.username if product.user else 'Anonymous',
+            'user_id': product.user_id,
         }
         for product in product_list
     ]
@@ -105,7 +109,8 @@ def show_json_by_id(request, product_id):
             'product_views': product.product_viewer,
             'launch_at': product.launch_at.isoformat() if product.launch_at else None,
             'is_featured': product.is_featured,
-            'user':  product.user.username if product.user else 'Anonymous',
+            'user_id': product.user_id,
+            'user_username':  product.user.username if product.user else None,
             'stock': product.stock,
             'size': product.size,
             'brand': product.brand,
@@ -276,4 +281,77 @@ def add_product_entry_ajax(request):
 
     return HttpResponse(b"LAUNCH", status=201)
 
-# Tinggal styling login, register, halaman utama, readme.md, dll
+def proxy_image(request):
+    image_url = request.GET.get('url')
+    if not image_url:
+        return HttpResponse('No URL provided', status=400)
+    try:
+        # fetch image from external source
+        response = requests.get(image_url, timeout=10)
+        response.raise_for_status()
+
+        # Return the image with proper content type
+        return HttpResponse(
+            response.content,
+            content_type=response.headers.get('Content-Type', 'image/jpeg')
+        )
+    except requests.RequestException as e:
+        return HttpResponse(f'Error fetching image: {str(e)}', status=500)
+
+@csrf_exempt
+def add_product_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        name = strip_tags(data.get("name",""))
+        description = strip_tags(data.get("description", ""))
+        category = request.POST.get("category", "")
+        price = data.get("price", "")
+        thumbnail = data.get("thumbnail", "")
+        is_featured = data.get("is_featured") == 'on'  # checkbox handling
+        stock = data.get('stock', '')
+        size = data.get('size', '')
+        brand=data.get('brand', '')
+        user = request.user
+
+        new_product = Product(
+            name=name, 
+            description=description,
+            category=category,
+            price=price,
+            thumbnail=thumbnail,
+            is_featured=is_featured,
+            stock=stock,
+            size=size,
+            brand=brand,
+            user=user,
+        )
+        new_product.save()
+        
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+@csrf_exempt
+def my_product_flutter(request):
+    products = Product.objects.filter(user=request.user)
+
+    data = [
+        {
+            'id': str(product.id),
+            'name': product.name,
+            'description': product.description,
+            'category': product.category,
+            'thumbnail': product.thumbnail,
+            'product_views': product.product_viewer,
+            'launch_at': product.launch_at.isoformat() if product.launch_at else None,
+            'is_featured': product.is_featured,
+            'stock': product.stock,
+            'size': product.size,
+            'brand': product.brand,
+            'price': product.price,
+            'user_id': product.user_id,
+        }
+        for product in products
+    ]
+
+    return JsonResponse(data, safe=False)

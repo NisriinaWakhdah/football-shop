@@ -112,12 +112,13 @@ Selain itu, kekurangannya adalah:
     - Penyimpanan sesi terbatas karena tergantung dengan webnya dan biasanya hanya memiliki batas penyimpanan dari 5 sampai 10 MB sehingga tidak sesuai untuk penyimpanan skala besar
     - User bisa saja mengalami kesulitan untuk mengakses data karena data akan dihapus ketika sesi berakhir karena penyimpanan ini bergantung pada sesi penulusuran yang sedang aktif
     - Cakupan penyimpanan session adalah penelusuran saat ini yang tidak bisa dibagikan ke seluruh tab atau jendela aplikasi web sehingga proses berbagi data antar komponen aplikasi yang sama atau berbeda dapat menjadi masalah
+    <br>
 Selain itu, terdapat penyimpanan cookies, yaitu file teks kecil (berisi data) yang disimpan pada perangkat pengguna ketika ia mengakses situs web untuk pertama kalinya. Kelebihan cookie antara lain adalah:
     - Cookie digunakan untuk mengigat preferensi pengguna sehingga dapat menciptakan pengalaman yang lebih personal bagi pengguna dan halaman web dapat dimuat dengan cepat
     - Menyimpan data seperti informasi login atau isi keranjang belanja sehingga dapat menyederhanakan cara user berinteraksi dengan situs web
     - Membantu meningkatkan kinerja halaman web dan menempati sedikit memori melalui penyimpanan data dalam cache dan mengurangi permintaan server
-    - Mudah digunakan karena browser otomatis mengirim cookie ke server setiap request
-    Berikut ini adalah kekurangan penyimpanan cookie:
+    - Mudah digunakan karena browser otomatis mengirim cookie ke server setiap request<br>
+Berikut ini adalah kekurangan penyimpanan cookie:
     - Data yang disimpan dapat dicuri dengan serangan XXS dan disalahgunakan tanpa sepengetahuan pemiliknya sehingga keamanannya tidak terjamin
     - Jika user mematikan cookie, maka cookie mungkin tidak berfungsi secara efektif di setiap perangkat karena beberapa fitur aplikasi tidak akan jalan yang mengakibatkan pengalaman user yang tidak konsisten
     - Tidak dapat menyimpan data yang complex dan hanya bisa menyimpan data berbentuk teks biasa
