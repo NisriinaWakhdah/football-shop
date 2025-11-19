@@ -70,7 +70,7 @@ def register(request):
             "status": False,
             "message": "Invalid request method."
         }, status=400)
-
+    
 @csrf_exempt
 def logout(request):
     username = request.user.username
